@@ -19,12 +19,13 @@ class VERSUS_API AVersusGameMode : public AGameMode
 public:
 	AVersusGameMode();
 protected:
-	// Spawn players in a reachable random point
+	// When a new player joins the game spawn a player for it
+	// in a reachable random point
 	void OnPostLogin(AController* NewPlayer) override;
 
 public:
 	// Prevent default pawn spawning automatically
-	// We will do that in On Pos Login
+	// We will do that in On Post Login
 	APawn* SpawnDefaultPawnFor_Implementation(AController* NewPlayer, AActor* StartSpot) override;
 
 public:
