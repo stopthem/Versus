@@ -22,6 +22,7 @@ public:
 	AVersusTankProjectile();
 
 private:
+	// Component that handles our movement
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UProjectileMovementComponent> ProjectileMovementComponent = nullptr;
 

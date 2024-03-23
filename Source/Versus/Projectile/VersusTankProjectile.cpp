@@ -21,8 +21,13 @@ AVersusTankProjectile::AVersusTankProjectile()
 	ProjectileMovementComponent->MaxSpeed = 1000.0f;
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;
 
-	// When we spawnned, we want server to spawn us in all clients
+	// When we spawned, we want server to spawn us in all clients
 	bReplicates = true;
+
+	// We are not going to replicate stuff
+	NetDormancy = ENetDormancy::DORM_DormantAll;
+	NetUpdateFrequency = 0;
+	MinNetUpdateFrequency = 0;
 }
 
 void AVersusTankProjectile::NotifyActorBeginOverlap(AActor* OverlappedActor)
