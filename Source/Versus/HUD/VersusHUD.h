@@ -7,7 +7,9 @@
 #include "VersusHUD.generated.h"
 
 /**
+ * AVersusHUD
  * 
+ * HUD class that handles Score UI
  */
 UCLASS()
 class VERSUS_API AVersusHUD : public AHUD
@@ -18,6 +20,7 @@ public:
 	AVersusHUD();
 
 public:
+	// Implemented in Blueprint because Widgets belong there
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdateScores();
 };

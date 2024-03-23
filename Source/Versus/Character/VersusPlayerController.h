@@ -10,7 +10,9 @@ class USpringArmComponent;
 class UCameraComponent;
 
 /**
- *
+ * AVersusPlayerController
+ * 
+ * Player Controller class that posseses AVersusCharacter
  */
 UCLASS()
 class VERSUS_API AVersusPlayerController : public APlayerController
@@ -19,5 +21,11 @@ class VERSUS_API AVersusPlayerController : public APlayerController
 
 public:
 	AVersusPlayerController();
+
+public:
+	// Fix path following component when pawn is replicated to us(spawn)
+	void OnRep_Pawn() override;
+
+
 #pragma endregion
 };

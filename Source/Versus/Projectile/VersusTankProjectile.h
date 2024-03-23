@@ -8,6 +8,11 @@
 
 class UProjectileMovementComponent;
 
+/*
+* AVersusTankProjectile
+* 
+* Projectile Class that AVersusCharacter fires
+*/
 UCLASS()
 class VERSUS_API AVersusTankProjectile : public AActor
 {
@@ -20,9 +25,11 @@ private:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UProjectileMovementComponent> ProjectileMovementComponent = nullptr;
 
+	// Root component
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UStaticMeshComponent> StaticMeshComponent = nullptr;
 
 public:
+	// Check for any overlapped players that aren't our instigator
 	void NotifyActorBeginOverlap(AActor* OverlappedActor) override;
 };

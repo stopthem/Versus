@@ -17,11 +17,11 @@ AVersusTankProjectile::AVersusTankProjectile()
 	SetRootComponent(StaticMeshComponent);
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovementComponent");
-	ProjectileMovementComponent->InitialSpeed = 100.0f;
-	ProjectileMovementComponent->MaxSpeed = 100.0f;
+	ProjectileMovementComponent->InitialSpeed = 1000.0f;
+	ProjectileMovementComponent->MaxSpeed = 1000.0f;
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;
-	ProjectileMovementComponent->SetUpdatedComponent(StaticMeshComponent);
 
+	// When we spawnned, we want server to spawn us in all clients
 	bReplicates = true;
 }
 
@@ -29,16 +29,20 @@ void AVersusTankProjectile::NotifyActorBeginOverlap(AActor* OverlappedActor)
 {
 	Super::NotifyActorBeginOverlap(OverlappedActor);
 
+	// We only detect collision in server because if client checks this too,
+	// same things will happen twice and we don't want that. Also for accuracy
 	if (!HasAuthority())
 	{
 		return;
 	}
 
+	// We don't want to hit our instigator
 	if (OverlappedActor == GetInstigator())
 	{
 		return;
 	}
 
+	// If overlapped actor is a versuscharacter, kill it
 	if (AVersusCharacter* OverlappedVersusCharacter = Cast<AVersusCharacter>(OverlappedActor))
 	{
 		OverlappedVersusCharacter->AUTH_OnHitByProjectile(this);

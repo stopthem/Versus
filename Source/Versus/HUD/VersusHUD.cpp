@@ -3,3 +3,6 @@
 
 #include "VersusHUD.h"
 
+AVersusHUD::AVersusHUD()
+{
+}
