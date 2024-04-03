@@ -1,5 +1,6 @@
 # Versus
- A simple demo about multiple tanks battling eachother
+ A simple demo about multiple tanks battling eachother.
+ 
 Showcase:
 
 
