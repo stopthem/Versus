@@ -20,7 +20,7 @@ public:
 	AVersusHUD();
 
 public:
-	// Implemented in Blueprint because Widgets belong there
+	// Update player scores
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdateScores();
 };
